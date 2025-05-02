@@ -1,0 +1,15 @@
+{
+    "testEnvironment": "node",
+    "transform": {},
+    "extensionsToTreatAsEsm": [".js"],
+    "moduleNameMapper": {
+        "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "collectCoverageFrom": [
+        "controller/**/*.js",
+        "services/**/*.js",
+        "model/**/*.js"
+    ],
+    "coverageReporters": ["html", "text", "lcov"],
+    "setupFiles": ["<rootDir>/tests/helpers/testUtils.js"]
+}
