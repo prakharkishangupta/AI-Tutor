@@ -70,7 +70,8 @@ export const login = async (req, res) => {
     res.cookie("jwt", token, {
       httpOnly: true, //saves from xss attack
       secure:false,
-      sameSite:"strict" //saves fron csrf attack
+      sameSite:"strict" ,//saves fron csrf attack
+      maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
     res.status(200).json({
@@ -98,3 +99,14 @@ export const getProfile = async(req, res) => {
     res.status(500).json({ message: "Failed to fetch user data ", error });
   }
 }
+
+// userController.js
+
+export const getCurrentUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select("-password");
+    res.json({ user });
+  } catch (err) {
+    res.status(401).json({ message: "Unauthorized" });
+  }
+};

@@ -10,6 +10,7 @@ const auth = async (req, res, next) => {
 
         const decodedData = jwt.verify(token, process.env.JWT_SECRET);
         req.userId = decodedData.userId;
+        console.log("Decoded userId:", req.userId);
         next();
     } catch (error) {
         console.error('Auth middleware error:', error);

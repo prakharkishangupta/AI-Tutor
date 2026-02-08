@@ -8,13 +8,14 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import geminiRouter from "./routes/geminiRouter.js";
 import paymentRouter from "./routes/paymentRouter.js";
+import courseRouter from "./routes/courseRouter.js";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 
 const app = express();
-const port = 5000;
+const port = 8000;
 
 app.use(cors({
     origin: "http://localhost:5173", // Your frontend origin
@@ -38,8 +39,9 @@ try {
 
 app.use("/api/user", userRoute);
 app.use("/api/ai", geminiRouter);
+app.use("/api/course", courseRouter);
 app.use('/api/payment', paymentRouter)
 
 app.listen(port, ()=>{
-    console.log("Server is running successfully on port 5000");
+    console.log("Server is running successfully on port 8000");
 })
