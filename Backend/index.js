@@ -20,7 +20,7 @@ const port = 8000;
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://your-frontend.vercel.app"
+    "https://ai-tutor-ten-ecru.vercel.app"
   ],
   credentials: true
 }));
