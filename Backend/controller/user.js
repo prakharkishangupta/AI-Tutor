@@ -26,7 +26,7 @@ export const signup = async (req, res) => {
     console.log("newUser:", newUser);
     if (newUser) {
       await emailService.sendWelcomeEmail(email, userName);
-      res.status(201).json({
+      res.status(200).json({
         message: "UserRegisters Successfully", user: {
           userName: newUser.userName,
           email: newUser.email,

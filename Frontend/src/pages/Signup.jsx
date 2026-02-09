@@ -16,7 +16,7 @@ const Register = () => {
 
   const [preview, setPreview] = useState(null);
 
-  const { userName, email, password, profileImage } = formData;
+  const { name, email, password, profileImage } = formData;
 
   const onChange = (e) => {
     if (e.target.name === 'profileImage') {
@@ -37,7 +37,7 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append('userName', userName);
+    data.append('userName', name);
     data.append('email', email);
     data.append('password', password);
     data.append('profileImage', profileImage);
@@ -48,6 +48,7 @@ const Register = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
+      console.log("Response from signup:", res.data);
       if(res.data){
         console.log(res.data);
         toast.success("Registration successful!");
