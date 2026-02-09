@@ -2,7 +2,7 @@
 import { Toaster } from 'react-hot-toast'
 import { Routes, Route, Navigate } from "react-router-dom";
 import Register from './pages/Signup.jsx'
-import Login from './pages/login.jsx';
+import Login from './pages/Login.jsx';
 import Structure from './pages/Structure.jsx';  
 import Home from './pages/Home.jsx';
 import Form from './pages/Form.jsx';
