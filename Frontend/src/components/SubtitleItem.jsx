@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../api/axios";
 
 const SubtitleItem = ({ subtitle, courseId, subtopicId, subtopicTitle }) => {
   const navigate = useNavigate();
   console.log("subtopicTitle", subtopicTitle);
   const handleClick = async () => {
-    const res = await axios.post(
-      "http://localhost:8000/api/ai/learning-resources",
+    const res = await api.post(
+      "/ai/learning-resources",
       {
         courseId,
         subtopicId,
@@ -14,7 +15,7 @@ const SubtitleItem = ({ subtitle, courseId, subtopicId, subtopicTitle }) => {
         order: subtitle.suborder,
         subtopicTitle
       },
-      { withCredentials: true }
+      
     );
 
     navigate(`/learning/${courseId}/${subtitle.suborder}`, {

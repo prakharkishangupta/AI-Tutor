@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import api from '../api/axios';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const Register = () => {
     data.append('profileImage', profileImage);
     console.log(data);
     try {
-      const res = await axios.post('http://localhost:8000/api/user/signup', data, {
+      const res = await api.post('/user/signup', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

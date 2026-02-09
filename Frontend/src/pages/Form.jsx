@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useAuth } from '../../context/AuthProvider.jsx';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import api from '../api/axios.js';
 
 
 
@@ -29,8 +30,7 @@ const FormPage = () => {
         console.log("formData: ", formData);
 
         try {
-            const response = await axios.post('http://localhost:8000/api/ai/gemini',formData, {
-                withCredentials: true, // Include credentials (cookies) in the request
+            const response = await api.post('/ai/gemini',formData, {
                 
                 headers: {
                     'Content-Type': 'application/json',

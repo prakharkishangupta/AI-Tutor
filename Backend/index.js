@@ -18,11 +18,13 @@ const app = express();
 const port = 8000;
 
 app.use(cors({
-    origin: "http://localhost:5173", // Your frontend origin
-    credentials: true, // Allow credentials (cookies)
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+  origin: [
+    "http://localhost:5173",
+    "https://your-frontend.vercel.app"
+  ],
+  credentials: true
 }));
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
@@ -31,7 +33,7 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 
 try {
-    mongoose.connect('mongodb://localhost:27017/')
+    mongoose.connect(process.env.MONGO_URI);
     console.log("Database connected successfully")
 } catch (error) {
     console.log(error);

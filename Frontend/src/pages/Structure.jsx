@@ -2,16 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import SubtopicCard from "../components/SubtopicCard.jsx";
+import api from "../api/axios.js";
 
 const Structure = () => {
   const { courseId } = useParams();
   const [course, setCourse] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/course/${courseId}`, {
-        withCredentials: true,
-      })
+    api.get(`/course/${courseId}`)
       .then(res => setCourse(res.data.course))
       .catch(console.error);
   }, [courseId]);

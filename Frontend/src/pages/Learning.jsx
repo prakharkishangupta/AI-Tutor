@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import api from "../api/axios";
 
 const Learning = () => {
   const { state } = useLocation();
@@ -32,11 +33,10 @@ const Learning = () => {
 
   const fetchLearning = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:8000/api/ai/learning-resources",
+      const res = await api.get(
+        "/ai/learning-resources",
         {
           params: { courseId, subtitleId },
-          withCredentials: true,
           signal: controller.signal
         }
       );

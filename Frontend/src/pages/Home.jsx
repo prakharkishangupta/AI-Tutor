@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 import CourseCard from "../components/CourseCard";
+import api from "../api/axios";
 
 const Home = () => {
   const [courses, setCourses] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/course/getCourse", {
-        withCredentials: true,
-      })
+    api.get("/course/getCourse",)
       .then(res => setCourses(res.data.courses))
       .catch(console.error);
   }, []);
