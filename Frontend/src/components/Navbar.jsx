@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from ".../context/AuthProvider.jsx";
+import { useAuth } from "../../context/AuthProvider.jsx";
 
 const Navbar = () => {
   const [authUser, setAuthUser] = useAuth();
