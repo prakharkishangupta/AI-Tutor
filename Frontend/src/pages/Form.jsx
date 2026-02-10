@@ -6,6 +6,7 @@ import { useAuth } from '../../context/AuthProvider.jsx';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import api from '../api/axios.js';
+import Navbar from '../components/Navbar.jsx';
 
 
 
@@ -59,7 +60,8 @@ const FormPage = () => {
         });
     };
     return (
-        
+        <>
+        <Navbar />
         <div className="hero  items-center justify-center min-h-screen bg-gray-800">
             <div className="card w-96 bg-white shadow-xl p-6">
                 <h1 className="text-2xl font-bold mb-4 text-center text-black">Create a New Course</h1>
@@ -223,13 +225,26 @@ const FormPage = () => {
                     
 
 
-                    <button type="submit" className="btn btn-primary w-full">
-                        Submit
+                    <button
+                        type="submit"
+                        disabled={isLoading}
+                        className={`btn btn-primary w-full flex justify-center items-center
+                        ${isLoading ? "opacity-70 cursor-not-allowed" : ""}`}
+                    >
+                        {isLoading ? (
+                            <>
+                                <span className="loading loading-spinner loading-sm"></span>
+                                <span className="ml-2">Generating...</span>
+                            </>
+                        ) : (
+                            "Generate Course"
+                        )}
                     </button>
+
                 </form>
             </div>
         </div>
-        
+        </>
     );
 };
 

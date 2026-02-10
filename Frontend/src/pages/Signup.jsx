@@ -7,6 +7,7 @@ import api from '../api/axios';
 
 const Register = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,6 +37,8 @@ const Register = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if(loading) return;
+    setLoading(true);
     const data = new FormData();
     data.append('userName', name);
     data.append('email', email);
@@ -59,6 +62,8 @@ const Register = () => {
     } catch (err) {
       console.error(err.response.data);
       // Handle error (e.g., display error messages)
+    } finally{
+      setLoading(false);
     }
   };
 
@@ -130,7 +135,21 @@ const Register = () => {
         </div>
         <div className=" flex justify-center">
             
-            <input type="submit" value="Signup" className="text-white bg-blue-600 cursor-pointer rounded-lg w-full py-2" />
+            <button
+              type="submit"
+              disabled={loading}
+              className="text-white bg-blue-600 rounded-lg w-full py-2 flex justify-center items-center"
+            >
+              {loading ? (
+                <>
+                  <span className="loading loading-spinner loading-sm"></span>
+                  <span className="ml-2">Signing up...</span>
+                </>
+              ) : (
+                "Signup"
+              )}
+            </button>
+
         </div>
         <p>Already have an Account? <span onClick={()=> navigate('/login')} className="text-blue-600 cursor-pointer underline" >Login</span></p>
       </form>

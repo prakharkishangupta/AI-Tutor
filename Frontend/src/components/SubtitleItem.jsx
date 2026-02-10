@@ -4,32 +4,52 @@ import api from "../api/axios";
 
 const SubtitleItem = ({ subtitle, courseId, subtopicId, subtopicTitle }) => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   console.log("subtopicTitle", subtopicTitle);
   const handleClick = async () => {
-    const res = await api.post(
-      "/ai/learning-resources",
-      {
-        courseId,
-        subtopicId,
-        subtitleName: subtitle.subtitleName,
-        order: subtitle.suborder,
-        subtopicTitle
-      },
-      
-    );
+    if(loading) return;
+    setLoading(true);
+    try {
+      const res = await api.post(
+        "/ai/learning-resources",
+        {
+          courseId,
+          subtopicId,
+          subtitleName: subtitle.subtitleName,
+          order: subtitle.suborder,
+          subtopicTitle
+        },
+        
+      );
 
-    navigate(`/learning/${courseId}/${subtitle.suborder}`, {
-      state: res.data
-    });
+      navigate(`/learning/${courseId}/${subtitle.suborder}`, {
+        state: res.data
+      });
+    } catch (error) {
+      console.error("Error navigating to learning page:", error);
+    }
+    finally {
+      setLoading(false);
+    }
   };
 
   return (
     <button
       onClick={handleClick}
-      className="w-full text-left bg-gray-700 p-2 rounded hover:bg-gray-600"
+      disabled={loading}
+      className={`w-full text-left bg-gray-700 p-2 rounded 
+      flex items-center justify-between
+      ${loading ? "opacity-70 cursor-not-allowed" : "hover:bg-gray-600"}`}
     >
-      {subtitle.suborder}. {subtitle.subtitleName}
+      <span>
+        {subtitle.suborder}. {subtitle.subtitleName}
+      </span>
+
+      {loading && (
+        <span className="loading loading-spinner loading-sm"></span>
+      )}
     </button>
+
   );
 };
 

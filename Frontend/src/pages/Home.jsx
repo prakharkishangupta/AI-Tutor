@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CourseCard from "../components/CourseCard";
 import api from "../api/axios";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
   const [courses, setCourses] = useState([]);
@@ -15,6 +16,8 @@ const Home = () => {
   }, []);
 
   return (
+    <>
+    <Navbar />
     <div className="p-8 bg-gray-900 min-h-screen">
       
       {/* Header Section */}
@@ -44,6 +47,7 @@ const Home = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

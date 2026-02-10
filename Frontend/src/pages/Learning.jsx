@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import api from "../api/axios";
+import Navbar from "../components/Navbar";
 
 const Learning = () => {
   const { state } = useLocation();
@@ -119,6 +120,8 @@ const Learning = () => {
   /* ---------------- RENDER ---------------- */
 
   return (
+    <>
+    <Navbar />
     <div className="p-8 max-w-5xl mx-auto text-white">
 
       {/* Header */}
@@ -248,6 +251,7 @@ const Learning = () => {
         </section>
       )}
     </div>
+    </>
   );
 };
 
