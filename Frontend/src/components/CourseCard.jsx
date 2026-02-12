@@ -1,3 +1,5 @@
+import defaultImage from "../assets/image.png";
+
 const CourseCard = ({ course, onClick }) => {
   return (
     <div
@@ -5,7 +7,7 @@ const CourseCard = ({ course, onClick }) => {
       className="bg-gray-800 rounded-lg shadow cursor-pointer hover:scale-105 transition"
     >
       <img
-        src={course.courseImage}
+        src={course.courseImage || defaultImage || "https://source.unsplash.com/500x300/?education"}
         alt={course.topic}
         className="h-40 w-full object-cover rounded-t-lg"
       />

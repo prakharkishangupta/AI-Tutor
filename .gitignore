@@ -1,3 +1,26 @@
-/Backend/.env
-/Backend/node_modules/
-/Frontend/memopack/node_modules/
+# Node
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+Backend/.env
+Frontend/.env
+
+# Build folders
+dist/
+build/
+Frontend/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+
+# Uploads
+uploads/
+
+# IDE
+.vscode/

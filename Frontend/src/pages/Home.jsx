@@ -10,7 +10,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.get("/course/getCourse",)
+    api.get("/course/getCourse")
       .then(res => setCourses(res.data.courses))
       .catch(console.error);
   }, []);

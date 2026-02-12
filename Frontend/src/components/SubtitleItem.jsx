@@ -6,7 +6,7 @@ import { useState } from "react";
 const SubtitleItem = ({ subtitle, courseId, subtopicId, subtopicTitle }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  console.log("subtopicTitle", subtopicTitle);
+  
   const handleClick = async () => {
     if(loading) return;
     setLoading(true);

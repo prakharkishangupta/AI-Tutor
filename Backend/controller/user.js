@@ -69,7 +69,7 @@ export const login = async (req, res) => {
     );
     res.cookie("jwt", token, {
       httpOnly: true, //saves from xss attack
-      secure:true,
+      secure: true, //cookie only works on https in production
       sameSite:"none" ,//saves fron csrf attack
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
@@ -81,8 +81,7 @@ export const login = async (req, res) => {
         userName: user.userName,
         email: user.email,
         profileImage: user.profileImage
-      },
-      token
+      }
     });
 
   } catch (error) {

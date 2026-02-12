@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
-
+import api from "../src/api/axios";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -11,12 +11,14 @@ export const AuthProvider = ({ children }) => {
     const checkAuth = async () => {
       try {
         const res = await api.get(
-          "/user/me",
+          "/user/me"
           
         );
 
         setAuthUser(res.data.user);
       } catch (err) {
+        console.log("authrefresh: ", authUser);
+        console.error("err ", err)
         setAuthUser(null);
       } finally {
         setLoading(false);

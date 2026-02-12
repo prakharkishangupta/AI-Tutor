@@ -17,9 +17,7 @@ function App() {
 
   if (loading) return <div>Loading...</div>;
 
-  if(authUser){
-    console.log("authUser : ", authUser.user);
-  }
+  
   
   return (
     <>
