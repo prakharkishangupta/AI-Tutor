@@ -15,8 +15,7 @@ AI Tutor is a dynamic educational platform where users can:
 * View lesson-wise deep learning content
 * Automatically generate course thumbnails
 * Fetch relevant YouTube videos
-* Upload media files
-* Receive email notifications
+
 
 ---
 
@@ -176,15 +175,6 @@ Backend generates contextual YouTube search queries and fetches relevant videos 
 * Files saved locally under `uploads/`
 * Optionally uploaded to Cloudinary
 * Backend returns accessible URLs
-
----
-
-# Email Integration
-
-Uses SMTP credentials to send:
-
-* Notifications
-* Password reset emails (if implemented)
 
 ---
 
