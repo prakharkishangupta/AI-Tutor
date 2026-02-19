@@ -69,8 +69,8 @@ export const login = async (req, res) => {
     );
     res.cookie("jwt", token, {
       httpOnly: true, //saves from xss attack
-      secure: false, //cookie only works on https in production
-      sameSite:"lax" ,//saves fron csrf attack
+      secure: true, //cookie only works on https in production
+      sameSite:"none" ,//saves fron csrf attack
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
