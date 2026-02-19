@@ -58,7 +58,7 @@ const Login = () => {
       <div className="hero-content flex-col">
         <div className="text-center">
           <h1 className="text-5xl font-bold">Login</h1>
-          <p className="py-6">Welcome back to MemoPack!</p>
+          <p className="py-6">Welcome back to AI Tutor!</p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">

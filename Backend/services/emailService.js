@@ -19,9 +19,9 @@ const sendWelcomeEmail = async (userEmail, userName) => {
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: userEmail,
-            subject: 'Welcome to MemoPack!',
+            subject: 'Welcome to AI Tutor!',
             html: `
-                <h1>Welcome to MemoPack, ${userName}!</h1>
+                <h1>Welcome to AI Tutor, ${userName}!</h1>
                 <p>Thank you for joining our platform. We're excited to have you on board!</p>
                 <p>Start exploring our features and enhance your learning journey.</p>
             `

@@ -71,7 +71,7 @@ const Register = () => {
     <>
     <div className="flex items-center justify-center py-40">
       <form onSubmit={onSubmit} className=" items-center justify-center border border-white space-y-3  px-6 py-3 rounded-md  w-[50vh]">
-        <h1><span className="font-bold text-3xl text-blue-500">Silent Talk</span></h1>
+        <h1><span className="font-bold text-3xl text-blue-500">AI Tutor</span></h1>
         <h2 className="text-2xl font-semibold items-center">Login to an <span className="text-blue-600">Account</span> </h2>
         <div className="space-y-3">
           

@@ -69,8 +69,8 @@ export const login = async (req, res) => {
     );
     res.cookie("jwt", token, {
       httpOnly: true, //saves from xss attack
-      secure: true, //cookie only works on https in production
-      sameSite:"none" ,//saves fron csrf attack
+      secure: false, //cookie only works on https in production
+      sameSite:"lax" ,//saves fron csrf attack
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
@@ -90,14 +90,14 @@ export const login = async (req, res) => {
   }
 };
 
-export const getProfile = async(req, res) => {
-  try {
-    const userData = await User.findById(req.userId);
-    res.status(200).json(userData);
-  } catch (error) {
-    res.status(500).json({ message: "Failed to fetch user data ", error });
-  }
-}
+// export const getProfile = async(req, res) => {
+//   try {
+//     const userData = await User.findById(req.userId);
+//     res.status(200).json(userData);
+//   } catch (error) {
+//     res.status(500).json({ message: "Failed to fetch user data ", error });
+//   }
+// }
 
 // userController.js
 
@@ -108,4 +108,9 @@ export const getCurrentUser = async (req, res) => {
   } catch (err) {
     res.status(401).json({ message: "Unauthorized" });
   }
+};
+
+export const logout = (req, res) => {
+  res.clearCookie("jwt");
+  res.json({ message: "Logged out" });
 };
