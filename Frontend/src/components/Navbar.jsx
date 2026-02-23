@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider.jsx";
 import api from "../api/axios.js";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [authUser, setAuthUser] = useAuth();
