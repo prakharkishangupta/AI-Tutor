@@ -111,6 +111,10 @@ export const getCurrentUser = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-  res.clearCookie("jwt");
+  res.clearCookie("jwt", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
   res.json({ message: "Logged out" });
 };
